@@ -1,0 +1,294 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MessageService</name>
+    </assembly>
+    <members>
+        <member name="T:MessageService.Controllers.UserMessageController">
+            <summary>
+            Класс для отображения запросов
+            </summary>
+        </member>
+        <member name="M:MessageService.Controllers.UserMessageController.#ctor(MessageService.Services.JsonFileMessageService,MessageService.Services.JsonFileUserService)">
+            <summary>
+            Конструктор для инициализации полей и свойств
+            </summary>
+            <param name="message">Сервис сообщений</param>
+            <param name="user">Сервис пользователей</param>
+        </member>
+        <member name="P:MessageService.Controllers.UserMessageController.UserService">
+            <summary>
+            Хранение пользовательского сервиса
+            </summary>
+        </member>
+        <member name="P:MessageService.Controllers.UserMessageController.MessageService">
+            <summary>
+            Хранение сервиса сообщений
+            </summary>
+        </member>
+        <member name="M:MessageService.Controllers.UserMessageController.SetUsers">
+            <summary>
+            Рандомная генерация пользователей
+            </summary>
+            <response code="200">Генерация прошла успешно</response>
+            <returns>Ответ сервера</returns>
+        </member>
+        <member name="M:MessageService.Controllers.UserMessageController.AddUser(System.String,System.String)">
+            <summary>
+            Добавление пользователя в список
+            </summary>
+            <param name="userName">Имя пользователя</param>
+            <param name="email">Эмайл пользователя</param>
+            <response code="400">Неверные данные</response>
+            <response code="200">Добавление прошло успешно</response>
+            <returns>Ответ сервера</returns>
+        </member>
+        <member name="M:MessageService.Controllers.UserMessageController.AddMessage(System.String,System.String,System.String,System.String)">
+            <summary>
+            Добавление сообщения
+            </summary>
+            <param name="sender">Отправитель</param>
+            <param name="receiver">Получатель</param>
+            <param name="subject">Тема сообщения</param>
+            <param name="message">Сообщение</param>
+            <response code="400">Неверные данные об отправителе или получателе</response>
+            <response code="404">Отправитель или получатель не найдены</response>
+            <response code="200">Сообщение отправлено успешно</response>
+            <returns>Ответ сервера</returns>
+        </member>
+        <member name="M:MessageService.Controllers.UserMessageController.GetUsers">
+            <summary>
+            Получить список всех пользователей
+            </summary>
+            <response code="404">Список пользователей пуст</response>
+            <response code="200">Успешно выведен список пользователей</response>
+            <returns>Ответ сервера</returns>
+        </member>
+        <member name="M:MessageService.Controllers.UserMessageController.GetUsersAtRange(System.Int32,System.Int32)">
+            <summary>
+            Получить список пользователей в диапазоне
+            </summary>
+            <response code="400">Неверные данные о границах</response>
+            <response code="200">Успешно получен список пользователей</response>
+            <param name="limit">Максимум пользователей для получения</param>
+            <param name="offset">Начальный индекс</param>
+            <returns>Ответ сервера</returns>
+        </member>
+        <member name="M:MessageService.Controllers.UserMessageController.GetUserByEmail(System.String)">
+            <summary>
+            Вывести пользователя по эмайлу
+            </summary>
+            <response code="404">Список пользователей не инициализирован или не найден данный пользователь</response>
+            <response code="200">Успешно найден пользователь</response>
+            <param name="email">Эмайл</param>
+            <returns>Ответ сервера</returns>
+        </member>
+        <member name="M:MessageService.Controllers.UserMessageController.GetMessageBySenderAndReceiver(System.String,System.String)">
+            <summary>
+            Получить список сообщений от конкретного пользователя конкретному
+            </summary>
+            <response code="404">Список пользователей не инициализирован или сообщение не найдено</response>
+            <response code="200">Успешно получен список сообщений</response>
+            <param name="sender">Отправитель</param>
+            <param name="receiver">Получатель</param>
+            <returns>Ответ сервера</returns>
+        </member>
+        <member name="M:MessageService.Controllers.UserMessageController.GetMessageBySender(System.String)">
+            <summary>
+            Получить список сообщений отправителя
+            </summary>
+            <response code="404">Список пользователей не инициализирован или сообщение не найдено</response>
+            <response code="200">Успешно получен список сообщений</response>
+            <param name="sender">Отправитель</param>
+            <returns>Ответ сервера</returns>
+        </member>
+        <member name="M:MessageService.Controllers.UserMessageController.GetMessageByReceiver(System.String)">
+            <summary>
+            Получить список сообщений получателя
+            </summary>
+            <response code="404">Список пользователей не инициализирован или сообщение не найдено</response>
+            <response code="200">Успешно получен список сообщений</response>
+            <param name="receiver">Получатель</param>
+            <returns>Ответ сервера</returns>
+        </member>
+        <member name="M:MessageService.Controllers.UserMessageController.GetXml">
+            <summary>
+            Получить xml комментарии к запросам
+            </summary>
+            <response code="200"></response>
+            <returns>Ответ сервера</returns>
+        </member>
+        <member name="T:MessageService.Generation.Generate">
+            <summary>
+            Класс дял генерации строк
+            </summary>
+        </member>
+        <member name="M:MessageService.Generation.Generate.GenerateMessages(System.Collections.Generic.List{MessageService.Models.User})">
+            <summary>
+            Генерация сообщений
+            </summary>
+            <param name="users">Список пользователей</param>
+            <returns>Список сообщений</returns>
+        </member>
+        <member name="M:MessageService.Generation.Generate.GenerateUsers">
+            <summary>
+            Генерация пользователей
+            </summary>
+            <returns>Список пользователей</returns>
+        </member>
+        <member name="M:MessageService.Generation.Generate.GenerateEmail">
+            <summary>
+            Генерация эмайлов
+            </summary>
+            <returns>Эмайл</returns>
+        </member>
+        <member name="M:MessageService.Generation.Generate.GenerateName(System.Int32)">
+            <summary>
+            Генерация строки
+            </summary>
+            <param name="max">Максимальная длина строки</param>
+            <returns>Сгенерированная строка</returns>
+        </member>
+        <member name="T:MessageService.Models.Messages">
+            <summary>
+            Класс для сообщения
+            </summary>
+        </member>
+        <member name="P:MessageService.Models.Messages.Subject">
+            <summary>
+            Тема сообщения
+            </summary>
+        </member>
+        <member name="P:MessageService.Models.Messages.Message">
+            <summary>
+            Сообщение
+            </summary>
+        </member>
+        <member name="P:MessageService.Models.Messages.SenderId">
+            <summary>
+            Отправитель
+            </summary>
+        </member>
+        <member name="P:MessageService.Models.Messages.ReceiverId">
+            <summary>
+            Получатель
+            </summary>
+        </member>
+        <member name="T:MessageService.Models.User">
+            <summary>
+            Класс для пользователя
+            </summary>
+        </member>
+        <member name="P:MessageService.Models.User.UserName">
+            <summary>
+            Имя пользователя
+            </summary>
+        </member>
+        <member name="P:MessageService.Models.User.Email">
+            <summary>
+            Эмайл пользователя
+            </summary>
+        </member>
+        <member name="M:MessageService.Program.Main(System.String[])">
+            <summary>
+            Старт приложения
+            </summary>
+            <param name="args">Дополнительные аргументы</param>
+        </member>
+        <member name="M:MessageService.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            Создать хост
+            </summary>
+            <param name="args">Дополнительные параметры</param>
+            <returns>Инициализация программы</returns>
+        </member>
+        <member name="T:MessageService.Services.JsonFileMessageService">
+            <summary>
+            Класс для работы с json файлом для сообщений
+            </summary>
+        </member>
+        <member name="M:MessageService.Services.JsonFileMessageService.#ctor(Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Конструктор для инициализации
+            </summary>
+            <param name="webHostEnvironment">Информация о веб-хосте</param>
+        </member>
+        <member name="P:MessageService.Services.JsonFileMessageService.JsonFileName">
+            <summary>
+            Имя json файла
+            </summary>
+        </member>
+        <member name="M:MessageService.Services.JsonFileMessageService.GetMessages">
+            <summary>
+            Получить список сообщений из json файла
+            </summary>
+            <returns>Список сообщений</returns>
+        </member>
+        <member name="M:MessageService.Services.JsonFileMessageService.SetMessages(System.Collections.Generic.IEnumerable{MessageService.Models.Messages})">
+            <summary>
+            Записать в json файл данные о сообщениях
+            </summary>
+            <param name="messages">Список сообщений</param>
+        </member>
+        <member name="T:MessageService.Services.JsonFileService">
+            <summary>
+            Абстрактный класс для работы с json файлами
+            </summary>
+        </member>
+        <member name="M:MessageService.Services.JsonFileService.#ctor(Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Конструктор для инициализации
+            </summary>
+            <param name="webHostEnvironment">Информация о веб-хосте</param>
+        </member>
+        <member name="P:MessageService.Services.JsonFileService.WebHostEnvironment">
+            <summary>
+            Веб-хост
+            </summary>
+        </member>
+        <member name="T:MessageService.Services.JsonFileUserService">
+            <summary>
+            Класс для работы с json файлом для пользователей
+            </summary>
+        </member>
+        <member name="M:MessageService.Services.JsonFileUserService.#ctor(Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Конструктор для инициализации
+            </summary>
+            <param name="webHostEnvironment">Информация о веб-хосте</param>
+        </member>
+        <member name="P:MessageService.Services.JsonFileUserService.JsonFileName">
+            <summary>
+            Имя json файла
+            </summary>
+        </member>
+        <member name="M:MessageService.Services.JsonFileUserService.GetUsers">
+            <summary>
+            Получить список пользователей из json файла
+            </summary>
+            <returns>Список пользователей</returns>
+        </member>
+        <member name="M:MessageService.Services.JsonFileUserService.SetUsers(System.Collections.Generic.IEnumerable{MessageService.Models.User})">
+            <summary>
+            Записать в json файл данные о пользователях
+            </summary>
+            <param name="users">Список пользователей</param>
+        </member>
+        <member name="T:MessageService.Startup">
+            <summary>
+            Класс для запуска приложения
+            </summary>
+        </member>
+        <member name="M:MessageService.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Конструктор для инициализации
+            </summary>
+            <param name="configuration">Конфигурация приложения</param>
+        </member>
+        <member name="P:MessageService.Startup.Configuration">
+            <summary>
+            Конфигурация приложения
+            </summary>
+        </member>
+    </members>
+</doc>
